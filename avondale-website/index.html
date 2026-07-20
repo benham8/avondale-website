@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Avondale — pop-punk / alternative rock. Listen, shop merch, and catch them live.">
+  <title>Avondale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       SITE HEADER / NAVIGATION
+       Shared across pages. Future pages (Music, Videos, Store,
+       Contact, About) can reuse this same nav pattern.
+       ========================================================= -->
+  <header class="site-header" id="top">
+    <div class="nav-inner">
+      <!-- Logo → always returns to homepage -->
+      <a class="logo-link" href="index.html" aria-label="Avondale — Home">
+        <!-- REPLACE: images/logo.png with your band logo -->
+        <img
+          class="logo"
+          src="images/logo.png"
+          alt="Avondale"
+          width="320"
+          height="96"
+        >
+      </a>
+
+      <!-- Mobile menu button (visible on small screens) -->
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <!--
+        Primary navigation
+        URLs for Listen come from data/links.json (not hardcoded).
+        Add future links here later: Music, Videos, Store, Contact, About
+      -->
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li>
+            <a
+              class="nav-link"
+              data-link="listen"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Listen</a>
+          </li>
+          <li>
+            <a class="nav-link" href="merch.html">Merch</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#tour">Tour</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         HERO
+         Full-bleed band photo with dark overlay.
+         REPLACE the image below with your preferred hero shot.
+         ========================================================= -->
+    <section class="hero" aria-label="Band photo">
+      <!--
+        HERO IMAGE PLACEHOLDER
+        Replace images/band-photo.jpg with your own wide band photo.
+        Keep the filename the same, or update the src below.
+      -->
+      <img
+        class="hero-image"
+        src="images/band-photo.jpg"
+        alt="Avondale band photo"
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+      >
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </section>
+
+    <!-- =========================================================
+         ABOUT
+         Bio paragraphs are loaded from data/band.json
+         ========================================================= -->
+    <section class="section about" id="about" aria-labelledby="about-heading">
+      <div class="section-inner">
+        <h1 class="section-title" id="about-heading">About the Band</h1>
+        <!-- Filled by js/data-loader.js -->
+        <div class="about-bio" id="about-bio"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TOUR
+         Dates are loaded from data/tour.json
+         ========================================================= -->
+    <section class="section tour" id="tour" aria-labelledby="tour-heading">
+      <div class="section-inner">
+        <h2 class="section-title" id="tour-heading">Catch Avondale Live</h2>
+        <!-- Filled by js/data-loader.js -->
+        <ul class="tour-list" id="tour-list"></ul>
+        <p class="tour-empty" id="tour-empty" hidden>No upcoming shows announced yet. Check back soon.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <p class="footer-brand">Avondale</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Avondale. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/data-loader.js" defer></script>
+  <script src="js/script.js" defer></script>
+</body>
+</html>

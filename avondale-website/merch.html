@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Buy Holding Patterns on vinyl and shop official Avondale merch.">
+  <title>Merch — Avondale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-merch">
+
+  <!-- Same navigation pattern as the homepage -->
+  <header class="site-header site-header--solid" id="top">
+    <div class="nav-inner">
+      <a class="logo-link" href="index.html" aria-label="Avondale — Home">
+        <!-- REPLACE: images/logo.png with your band logo -->
+        <img
+          class="logo"
+          src="images/logo.png"
+          alt="Avondale"
+          width="160"
+          height="48"
+        >
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li>
+            <a
+              class="nav-link"
+              data-link="listen"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Listen</a>
+          </li>
+          <li>
+            <a class="nav-link" href="merch.html" aria-current="page">Merch</a>
+          </li>
+          <li>
+            <a class="nav-link" href="index.html#tour">Tour</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         MERCH HERO / ALBUM FEATURE
+         ========================================================= -->
+    <section class="section merch-feature" aria-labelledby="merch-heading">
+      <div class="section-inner merch-feature-inner">
+
+        <!--
+          ALBUM ART PLACEHOLDER
+          Replace images/holding-patterns.jpg with your album cover.
+          Keep the filename the same, or update the src below.
+        -->
+        <img
+          class="album-art"
+          src="images/holding-patterns.jpg"
+          alt="Holding Patterns album cover"
+          width="800"
+          height="800"
+          loading="lazy"
+        >
+
+        <div class="merch-copy">
+          <h1 class="section-title" id="merch-heading">Buy Holding Patterns on Vinyl</h1>
+          <p class="merch-text">
+            The record that started it all — pressed on vinyl and ready for your shelf,
+            your turntable, and every late-night listen.
+          </p>
+          <!-- Smooth-scrolls down to the store section -->
+          <a class="btn" href="#store">Buy Now</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         STORE
+         Paste your Ecwid (or other) store widget inside #store-widget.
+         ========================================================= -->
+    <section class="section store" id="store" aria-labelledby="store-heading">
+      <div class="section-inner">
+        <h2 class="section-title" id="store-heading">Store</h2>
+
+        <!--
+          ECWID WIDGET PLACEHOLDER
+          ---------------------------------------------------------
+          1. Log in to your Ecwid account and copy the store embed code.
+          2. Paste that code INSIDE the <div id="store-widget"> below,
+             replacing the comment that says "Paste Ecwid widget here".
+          3. Save this file and refresh the page.
+          ---------------------------------------------------------
+          Do not put the widget code anywhere else on the page.
+        -->
+        <div id="<div id="my-store-139529005"></div>
+        <div>
+        <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?139529005&data_platform=code&data_date=2026-07-20" charset="utf-8"></script><script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-139529005");</script>
+        </div>">
+          <!-- Paste Ecwid widget here -->
+          <p class="store-placeholder">
+            Your store will appear here once the Ecwid widget is added.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <p class="footer-brand">Avondale</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Avondale. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/data-loader.js" defer></script>
+  <script src="js/script.js" defer></script>
+</body>
+</html>
