@@ -1,0 +1,432 @@
+/* =========================================================
+   Avondale — Site Styles
+   Plain CSS only. Organized by section.
+   ========================================================= */
+
+/* --- CSS VARIABLES --- */
+:root {
+  --background: #f3f2ef;
+  --background-alt: #e8e6e1;
+  --text: #141414;
+  --text-muted: #4a4a4a;
+  --accent: #e10600;
+  --accent-hover: #b50500;
+  --header-text: #ffffff;
+  --overlay: rgba(0, 0, 0, 0.45);
+  --border: rgba(20, 20, 20, 0.12);
+  --spacing: 1.5rem;
+  --spacing-lg: 4.5rem;
+  --max-width: 68rem;
+  --nav-height: 4.5rem;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+  --transition: 0.25s ease;
+}
+
+/* --- BASE --- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--transition), opacity var(--transition);
+}
+
+a:hover { color: var(--accent-hover); }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+p { margin: 0 0 1rem; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* --- LAYOUT --- */
+.section { padding: var(--spacing-lg) var(--spacing); }
+.section-inner { max-width: var(--max-width); margin: 0 auto; }
+.section-title {
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  margin-bottom: 1.75rem;
+}
+
+/* --- HEADER / NAV --- */
+.site-header {
+  position: absolute;
+  top: 1; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  color: var(--header-text);
+}
+
+.site-header--solid {
+  position: sticky;
+  background: #111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  height: 6rem;
+  width: auto;
+  object-fit: contain;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.logo-link:hover .logo {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--header-text);
+  padding: 0.55rem 0.15rem;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0.2rem;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.nav-link:hover,
+.nav-link[aria-current="page"] { color: #fff; }
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after { transform: scaleX(1); }
+
+.menu-toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.menu-toggle-bar {
+  display: block;
+  width: 1.4rem;
+  height: 2px;
+  background: #fff;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* --- HERO --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    var(--overlay) 40%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+/* --- ABOUT --- */
+.about-bio p {
+  max-width: 40rem;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.about-bio p:last-child { margin-bottom: 0; }
+
+/* --- TOUR --- */
+.tour { background: var(--background-alt); }
+
+.tour-list { border-top: 1px solid var(--border); }
+
+.tour-item {
+  display: grid;
+  grid-template-columns: 8rem 1fr 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--transition), padding-left var(--transition);
+}
+
+.tour-item:hover {
+  background: rgba(255, 255, 255, 0.45);
+  padding-left: 0.5rem;
+}
+
+.tour-date {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tour-city { font-weight: 600; }
+.tour-venue,
+.tour-empty { color: var(--text-muted); }
+.tour-empty { font-style: italic; }
+
+/* --- MERCH --- */
+.merch-feature {
+  padding-top: calc(var(--nav-height) + var(--spacing-lg));
+}
+
+.merch-feature-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.album-art {
+  width: 100%;
+  max-width: 28rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #222;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  transition: transform 0.4s ease;
+}
+
+.album-art:hover { transform: scale(1.015); }
+
+.merch-text {
+  max-width: 28rem;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  margin-bottom: 1.75rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.15rem;
+  padding: 0.85rem 1.9rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 2px;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.store {
+  background: var(--background-alt);
+  padding-bottom: 6.5rem;
+}
+
+#store-widget { min-height: 8rem; }
+
+.store-placeholder {
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  padding: 2.5rem var(--spacing);
+  background: #111;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  align-items: baseline;
+}
+
+.footer-brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer-copy { margin: 0; font-size: 0.95rem; }
+
+/* --- TABLET --- */
+@media (max-width: 900px) {
+  :root { --spacing-lg: 3.5rem; }
+
+  .tour-item {
+    grid-template-columns: 7rem 1fr;
+  }
+
+  .tour-venue { grid-column: 2; }
+
+  .merch-feature-inner { grid-template-columns: 1fr; }
+  .album-art { max-width: 22rem; }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 700px) {
+  :root {
+    --spacing: 1.15rem;
+    --spacing-lg: 3rem;
+    --nav-height: 4rem;
+  }
+
+  .menu-toggle { display: flex; }
+
+  .primary-nav {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background: rgba(10, 10, 10, 0.96);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .primary-nav.is-open { max-height: 18rem; }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem var(--spacing);
+    font-size: 1.05rem;
+    min-height: 3rem;
+  }
+
+  .nav-link::after { display: none; }
+
+  .hero,
+  .hero-image {
+    min-height: 85vh;
+    min-height: 85svh;
+  }
+
+  .tour-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 1.35rem 0;
+  }
+
+  .tour-venue { grid-column: 1; }
+  .btn { width: 100%; max-width: 20rem; }
+  .footer-inner { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
