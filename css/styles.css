@@ -214,6 +214,18 @@ ul { margin: 0; padding: 0; list-style: none; }
   pointer-events: none;
 }
 
+.hero-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 2.5rem; /* raise/lower as needed */
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.hero-cta:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+
 /* --- ABOUT --- */
 .about-bio p {
   max-width: 40rem;
